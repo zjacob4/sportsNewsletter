@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily News</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Daily News Headlines</h1>
+    <ul>
+        {% for headline in headlines %}
+            <li>{{ headline }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Today's News</h2>
+    <div>
+        {{ result|safe }}
+    </div>
+</body>
+</body>
+</html>
