@@ -1,17 +1,19 @@
-/* Reset default styles and set box-sizing */
+/* CSS Reset */
 *, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-/* Base styles */
+/* Base Styles */
 :root {
     --primary-color: #1a5f7a;
-    --secondary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
     --text-color: #333;
     --background-color: #f4f4f4;
-    --footer-color: #777;
+    --border-color: #ddd;
+    font-size: calc(1rem + 0.5vw);
 }
 
 body {
@@ -22,78 +24,125 @@ body {
     margin: 0 auto;
     padding: 20px;
     background-color: var(--background-color);
+    font-size: 1rem;
 }
 
 /* Typography */
-h1, h2 {
-    color: var(--primary-color);
-    margin-bottom: 1.25rem;
-}
-
-h1 {
-    font-size: 2.5rem;
-    text-align: center;
+h2, h3, h4 {
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
 }
 
 h2 {
-    font-size: 1.8rem;
-    margin-top: 1.875rem;
-    border-bottom: 2px solid var(--secondary-color);
-    padding-bottom: 0.3125rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+h3 {
+    color: var(--secondary-color);
+}
+
+h4 {
+    color: var(--accent-color);
 }
 
 p {
-    margin-bottom: 0.9375rem;
+    margin-bottom: 1.25em;
 }
 
-em {
-    font-style: italic;
-    color: #555;
+/* Image Styles */
+.newsletter-image {
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1em;
+    display: block;
+    will-change: box-shadow;
 }
 
-/* Lists */
+/* Quick Hits Section */
 ul {
     list-style-type: none;
-    margin-left: 1.25rem;
+    padding-left: 0;
 }
 
 li {
-    margin-bottom: 0.625rem;
-    padding-left: 1.25rem;
+    margin-bottom: 0.75em;
+    padding-left: 1.5em;
     position: relative;
 }
 
 li::before {
-    content: "•";
-    color: var(--secondary-color);
-    font-weight: bold;
+    content: "";
     position: absolute;
     left: 0;
+    top: 0.3em;
+    width: 1em;
+    height: 1em;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
-/* Footer */
-footer {
-    margin-top: 1.875rem;
-    text-align: center;
-    font-style: italic;
-    color: var(--footer-color);
+li:nth-child(1)::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%23e74c3c" d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm0 384c-97.2 0-176-78.8-176-176S158.8 80 256 80s176 78.8 176 176-78.8 176-176 176z"/></svg>');
 }
 
-/* Media queries */
-@media screen and (max-width: 37.5rem) {
+li:nth-child(2)::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%233498db" d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm0 384c-97.2 0-176-78.8-176-176S158.8 80 256 80s176 78.8 176 176-78.8 176-176 176z"/></svg>');
+}
+
+li:nth-child(3)::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%232ecc71" d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm0 384c-97.2 0-176-78.8-176-176S158.8 80 256 80s176 78.8 176 176-78.8 176-176 176z"/></svg>');
+}
+
+li:nth-child(4)::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%23f39c12" d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm0 384c-97.2 0-176-78.8-176-176S158.8 80 256 80s176 78.8 176 176-78.8 176-176 176z"/></svg>');
+}
+
+/* Attribution Note */
+small {
+    font-size: 0.8em;
+    color: #777;
+    display: block;
+    margin-top: 2em;
+}
+
+/* Accessibility */
+a:focus, button:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
     body {
-        padding: 0.625rem;
-    }
-
-    h1 {
-        font-size: 2rem;
+        padding: 10px;
     }
 
     h2 {
-        font-size: 1.5rem;
+        font-size: 1.5em;
     }
 
-    p, li {
-        font-size: 0.9rem;
+    h3 {
+        font-size: 1.25em;
+    }
+
+    .newsletter-image {
+        max-width: 100%;
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background-color: white;
+        color: black;
+    }
+    
+    .newsletter-image {
+        max-width: 100%;
+        page-break-inside: avoid;
     }
 }
