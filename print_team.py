@@ -1,5 +1,6 @@
 from flask import Flask, render_template
-from news_team import write_stories, get_readable_result
+from news_team import write_stories
+from create_stylesheet import write_css_stylesheet
 
 app = Flask(__name__)
 
@@ -13,8 +14,7 @@ def index():
     
     # Generate or fetch the result
     result = write_stories()
-    result = get_readable_result(result)
-    
+    write_css_stylesheet(result)
 
     return render_template('index.html', headlines=headlines, result=result)
 

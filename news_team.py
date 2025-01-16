@@ -16,7 +16,7 @@ def write_stories():
 
     cathy = ConversableAgent(
         "cathy",
-        system_message="You are an NFL sports writer reporting on the latest news for your newsletter. Your job is to write each story as a single paragraph; not too long. If you are given feedback by your editor, you should incorporate it and revise your stories. When you get feedback, respond with your revisions but do not address the editor.",
+        system_message="You are a sports writer reporting on the latest news for your newsletter. Your job is to write each story as a single paragraph; not too long. You should also prioritize a good mix of stories from different sports. If you are given feedback by your editor, you should incorporate it and revise your stories. When you get feedback, respond with your revisions but do not address the editor. If you're not given anything to work on, just re-share the stories that were approved. Do not answer your editor with a response, just make the changes to your news story, where applicable.",
         llm_config={"config_list": [{"model": "claude-3-5-sonnet-20240620",
             "api_key": "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",
             "api_type": "anthropic"}]},
@@ -32,11 +32,7 @@ def write_stories():
         human_input_mode="NEVER",  # Never ask for human input.
     )
 
-    result = joe.initiate_chat(cathy, message=f"Write today's newsletter on the following stories. Use HTML formatting. {contents}", max_turns=2)
-    return result
-
-def get_readable_result(result):
-    # Assuming result has an attribute 'messages' which is a list of message objects
+    result = joe.initiate_chat(cathy, message=f"Write today's newsletter on the following stories. Use HTML formatting. {contents}", max_turns=3)
     return result.summary
 
 if __name__ == '__main__':

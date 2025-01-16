@@ -1,65 +1,161 @@
-/* Reset default styles */
-body, h1, h2, h3, h4, h5, h6, p, ul, ol, li {
+/* CSS Reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-/* Set font and background color */
+/* CSS Variables */
+:root {
+    --primary-color: #1a5f7a;
+    --primary-color-dark: #134b61;
+    --text-color: #333;
+    --background-color: #f4f4f4;
+    --secondary-text-color: #666;
+}
+
+/* Base styles */
+html {
+    font-size: 16px;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    color: #333333; /* Default text color */
-}
-
-/* Container for the newsletter */
-.container {
-    max-width: 600px;
-    margin: 20px auto; /* Add margin for spacing */
+    line-height: 1.6;
+    color: var(--text-color);
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 8px; /* Rounded corners */
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Header styles */
-.header {
-    text-align: center;
-    margin-bottom: 20px;
+h1, h2, h3 {
+    color: var(--primary-color);
+    margin: 1rem 0;
 }
 
-.header h1 {
-    color: #007BFF; /* Primary color for header */
+h1 {
+    font-size: 2.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
 }
 
-/* Headings */
 h2 {
-    color: #0056b3; /* Secondary color for subheadings */
-    margin-bottom: 10px;
+    font-size: 2rem;
 }
 
-/* Paragraphs */
-p {
-    margin-bottom: 15px;
-    line-height: 1.6; /* Improve readability */
+h3 {
+    font-size: 1.5rem;
 }
 
-/* List styles */
+p, ul {
+    margin-bottom: 1rem;
+    max-width: 65ch;
+}
+
+em {
+    color: var(--secondary-text-color);
+}
+
+strong {
+    color: var(--primary-color);
+}
+
 ul {
-    list-style-type: disc;
-    padding-left: 20px; /* Indent list items */
-    margin-bottom: 15px;
+    list-style-type: none;
+    padding-left: 0;
 }
 
 li {
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
+    padding-left: 1.25rem;
+    position: relative;
 }
 
-/* Additional styles for links */
+li:before {
+    content: "•";
+    color: var(--primary-color);
+    font-size: 1.2em;
+    position: absolute;
+    left: 0;
+}
+
 a {
-    color: #007BFF;
+    color: var(--primary-color);
     text-decoration: none;
+    transition: color 0.3s ease, outline 0.3s ease;
 }
 
 a:hover {
-    text-decoration: underline;
+    color: var(--primary-color-dark);
+}
+
+a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+/* Media query for tablets */
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+
+    body {
+        padding: 15px;
+    }
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 12px;
+    }
+
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        font-size: 12pt;
+        color: #000;
+        background-color: #fff;
+        box-shadow: none;
+    }
+
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
+
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+
+    ul {
+        page-break-inside: avoid;
+    }
 }
