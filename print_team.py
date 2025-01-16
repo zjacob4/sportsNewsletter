@@ -8,7 +8,6 @@ app = Flask(__name__)
 def index():
     # Fetch the daily news headlines from an API or a database
     headlines = [
-        "Breaking News:...",
         # Add more headlines here
     ]
     
@@ -19,4 +18,4 @@ def index():
     return render_template('index.html', headlines=headlines, result=result)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=8080)
