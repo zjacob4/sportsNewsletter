@@ -23,7 +23,11 @@ def add_graphics(contents):
         human_input_mode="NEVER",  # Never ask for human input.
     )
 
-    result = joe.initiate_chat(cathy, message=f"Add graphics to today's stories and maintain an HTML output: {contents}", max_turns=3)
+    result = joe.initiate_chat(cathy, message=f"Add graphics to today's stories and maintain an HTML output: {contents}", max_turns=2
+    )
+
+    with open("latest_text/latest_graphics.txt", "w") as file:
+        file.write(result.summary)
     return result.summary
 
 if __name__ == '__main__':
