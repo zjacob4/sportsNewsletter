@@ -3,7 +3,10 @@ import os
 from autogen import ConversableAgent
 import requests
 
-def write_css_stylesheet(html_script):
+def write_css_stylesheet(html_script, css_few_shot):
+
+    with open(css_few_shot, 'r') as file:
+        css_few_shot_content = file.read()
 
     cathy = ConversableAgent(
         "cathy",
@@ -23,7 +26,7 @@ def write_css_stylesheet(html_script):
         human_input_mode="NEVER",  # Never ask for human input.
     )
 
-    result = joe.initiate_chat(cathy, message=f"Write today's newsletter's CSS stylesheet for the following HTML script: {html_script}", max_turns=3)
+    result = joe.initiate_chat(cathy, message=f"Here is a sample CSS code to model after: {css_few_shot_content}. Write today's newsletter's CSS stylesheet for the following HTML script: {html_script}", max_turns=3)
     create_stylesheet(result.summary)
     
     return None
@@ -35,4 +38,7 @@ def create_stylesheet(css):
     return None
 
 if __name__ == '__main__':
-    write_stories()
+    with open('templates/index.html', 'r') as html_file:
+        html_script = html_file.read()
+
+    write_css_stylesheet(html_script, 'static/styles_few_shot.css')

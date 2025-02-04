@@ -24,7 +24,7 @@ def index():
     with open('latest_text/latest_writing_fact_check.txt', 'w') as file:
         file.write(result)
     result = add_graphics(result)
-    write_css_stylesheet(result)
+    write_css_stylesheet(result, 'static/styles_few_shot.css')
 
     return render_template('index.html', headlines=headlines, result=result)
 

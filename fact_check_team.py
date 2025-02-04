@@ -22,13 +22,13 @@ def fact_check_stories(contents):
             "role": "system",
             "content": (
                 "You are an artificial intelligence assistant and you need to "
-                "engage in a helpful, detailed, polite conversation with a user."
+                "engage in a helpful, detailed, conversation with a user."
             ),
         },
         {
             "role": "user",
             "content": (
-                f"You are a fact-checker for a sports news outlet. Review the following stories and repeat the stories back, exactly as you received them, replacing any incorrect information with the correct facts: {contents} . Read the following news as well and use this to fact check (start here and then use the internet for anything not provided here):  {news} "
+                f"You are a fact-checker for a sports news outlet. If you receive an input in HTML format, respond in HTML format with the input corrected, not with additional commentary. Review the following stories and repeat the stories back, exactly as you received them, replacing any incorrect information with the correct facts: {contents} . Read the following news as well and use this to fact check (start here and then use the internet for anything not provided here):  {news} "
             ),
         },
     ]
